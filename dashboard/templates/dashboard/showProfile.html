@@ -1,0 +1,55 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <a href="{% url 'profile' %}" class="btn btn-primary m-4"> Add  New Address &nbsp; <i class="fa fa-plus" aria-hidden="true"></i> </a>
+    <div class="row">
+{% if  record %} 
+{% for record in record  %}
+<div class="col-sm-4">
+    <div class="card m-4">
+
+        <div class="card-body">
+           
+    
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i> &nbsp;
+    
+            <strong>   
+    
+               Address : {{ forloop.counter }}
+    
+            </strong>
+            <hr> 
+            <p> <strong> Name: </strong> {{record.name}} </p>
+    
+            <p> <strong> City: </strong> {{record.city}} </p>
+    
+            <p> <strong> Phone number: </strong> {{record.mobile}} </p>
+    
+            <p> <strong> Pin: </strong> {{record.pincode}} </p>
+            <p> <strong> State: </strong> {{record.state}} </p>
+            
+    
+        </div>
+        <a href="{% url 'updaterecord' record.id %}" class="btn btn-info"> Update address &nbsp; <i class="fa fa-plus" aria-hidden="true"></i> </a>
+        
+        &nbsp;
+        
+        <a href="{% url 'deleterecord' record.id %}" class="btn btn-danger"> Delete &nbsp;<i class="fa fa-minus-square" aria-hidden="true"></i> </a>
+    
+    </div>
+    
+    <br>
+    
+    
+    
+</div>
+
+{%  endfor  %}
+{% endif %}
+    </div>
+</div>
+
+{% endblock %}

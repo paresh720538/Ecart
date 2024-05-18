@@ -1,0 +1,59 @@
+{% extends 'dashboard/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+
+    <body>
+
+        <div class="container bg-light shadow-md p-5 form-login-layout">
+
+            <h3> Login into your account </h3>
+
+            <hr>
+            <br>
+
+            <form method="POST" autocomplete="off" >
+
+                <!-- # this token is mandetory for posting the form  -->
+                {% csrf_token %}
+
+                <!-- this form is equal to the form written in views function -->
+                {{form|crispy}} 
+
+                <br>
+
+                <button type="submit" class="btn btn-primary w-100 btn-block p-2"> Login &nbsp; <i class="fa fa-user" aria-hidden="true"></i> </button>
+
+
+            </form>
+
+            <br>
+
+            <div class="text-center">
+
+                <p> Don't have an account? </p> <a href="{% url 'register' %}"> Register </a>
+
+            </div>
+
+
+        </div>
+
+        <br>
+
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

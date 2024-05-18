@@ -1,0 +1,24 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<header class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <h1>Contact Form Submitted</h1>
+    </div>
+</header>
+<main class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="alert alert-success fade-in" role="alert">
+                    <strong>Success!</strong> Your message has been successfully submitted.
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}

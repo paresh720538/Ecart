@@ -1,0 +1,98 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div style=" width:100%;" class="m-10 mt-4 ">
+    <div class="center">
+      <h1 class="text-center ">About</h1>
+      <br>
+        <p class="style_text" >
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
+          voluptatem placeat quos debitis omnis quis odit, at nihil eum quam quo
+          suscipit cum, error dolor est recusandae labore. Numquam, aperiam. Lorem, 
+          ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
+          voluptatem placeat quos debitis omnis quis odit, at nihil eum quam quo
+          suscipit cum, error dolor est recusandae labore. Numquam, aperiam.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
+          voluptatem placeat quos debitis omnis quis odit, at nihil eum quam quo
+          suscipit cum, error dolor est recusandae labore. Numquam, aperiam.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
+          voluptatem placeat quos debitis omnis quis odit, at nihil eum quam quo
+          suscipit cum, error dolor est recusandae labore. Numquam, aperiam. Lorem, 
+          ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
+          voluptatem placeat quos debitis omnis quis odit, at nihil eum quam quo
+          suscipit cum, error dolor est recusandae labore. 
+         
+        </p>
+    </div>
+    
+  </div>
+
+  <div class="container">
+    <h1 class="text-center ">Products</h1>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card m-4" style="width: 18rem;">
+            <img src="{% static 'img/laptop.jpeg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Lenovo Legion 5</h5>
+              
+              <a href="{% url 'cetagory' 'LP' %}" class="btn btn-success">Views More</a>
+            </div>
+        </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card m-4" style="width: 18rem;">
+              <img src="{% static 'img/ipad.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Apple Ipad</h5>
+                
+                <a href="{% url 'cetagory' 'TB' %}" class="btn btn-success">Views More</a>
+              </div>
+          </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card m-4" style="width: 18rem;">
+                <img src="{% static 'img/led.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Sony Bravia</h5>
+                  
+                  <a href="{% url 'cetagory' 'LD' %}" class="btn btn-success">Views More</a>
+                </div>
+            </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="card m-4" style="width: 18rem;">
+                  <img src="{% static 'img/mobile.jpeg' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Redmi Note 8 Pro</h5>
+                    
+                    <a href="{% url 'cetagory' 'MB' %}" class="btn btn-success">Views More</a>
+                  </div>
+              </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="card m-4" style="width: 18rem;">
+                    <img src="{% static 'img/one.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Boat stone 650</h5>
+                      
+                      <a href="{% url 'cetagory' 'HP' %}" class="btn btn-success">Views More</a>
+                    </div>
+                </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card m-4" style="width: 18rem;">
+                      <img src="{% static 'img/laptop2.jpeg' %}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">View All Products</h5>
+                        
+                        <a href="{% url 'product' %}" class="btn btn-info">Views All</a>
+                      </div>
+                  </div>
+                  </div>
+    </div>
+  </div>
+{% endblock %}

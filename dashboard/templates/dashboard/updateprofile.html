@@ -1,0 +1,28 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <br>
+    <div class="container bg-light shadow-md p-5 form-layout">
+        <br>
+        <form method="POST" autocomplete="off" >
+
+            <!-- # this token is mandetory for posting the form  -->
+            {% csrf_token %}
+
+            <!-- this form is equal to the form written in views function -->
+            {{form|crispy}}
+
+            <br>
+
+            <button type="submit" class="btn btn-primary w-100 btn-block p-2">Update address &nbsp; <i class="fa fa-user" aria-hidden="true"></i> </button>
+
+
+        </form>
+    </div>
+
+    
+
+{% endblock %}

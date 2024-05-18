@@ -1,0 +1,30 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %}
+
+{% block content %}
+
+
+    <div class="container">
+        <div class="row">
+            {% for x in data %}
+            
+            <div class="col-sm-4">
+            <div class="card m-4" style="width: 18rem;">
+                <img src="{{x.product_image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{x.title}}</h5>
+                  <p class="card-text">Rs.{{x.sell_price}}/-</p>
+                  <small class="text-decoration-line-through text-muted fs-7">Rs.{{x.discounted_price}}/-</small><br>
+                  <a href="{% url 'details' x.id %}" class="btn btn-primary">Views Details</a>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+        
+        
+        
+    
+
+{% endblock %}

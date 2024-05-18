@@ -1,0 +1,53 @@
+.form-register-layout {
+  margin-top: 45px;
+  border-radius: 15px;
+  width: 500px;
+}
+.form-login-layout {
+  margin-top: 100px;
+  border-radius: 15px;
+  width: 500px;
+}
+.message-text {
+  color: white;
+}
+
+.mySlides {
+  display: none;
+}
+.form-layout{
+
+  border-radius: 15px;
+  width: 500px;
+
+}
+
+.message-text{
+  color: white;
+}
+
+
+
+
+.center {
+        
+        margin: auto;
+        width: 70%;
+        padding: 10px;
+    }
+
+.style_text{
+
+    line-height: 1.8rem;
+    letter-spacing: 2px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+.success-container {
+  text-align: center;
+}

@@ -1,0 +1,32 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+
+<body>
+    
+    <div class="container">
+        {% if count > 0 %}
+        <div class="row">
+            {% for x in product %}
+            
+            <div class="col-sm-4">
+            <div class="card m-4" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title text-lg">{{x.title}}</h5>
+                  <p class="card-text">Rs.{{x.sell_price}}/-</p>
+                  <p class="card-text text-decoration-line-through text-muted">Rs.{{x.discounted_price}}/-</p>
+                  <a href="{% url 'details' x.id %}" class="btn btn-primary">view details</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="{% url 'add-to-cart' x.id %}" class="btn btn-success">Add to Cart</a>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <h1 class="text-center mt-5">NO Items Found, Sorry! <span style="font-size: 70px;">&#128542;</span></h1>
+        {% endif%}
+    </div>
+
+    
+
+</body>
+{% endblock %}

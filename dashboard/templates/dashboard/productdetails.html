@@ -1,0 +1,31 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container my-5">
+    <div class="row flex justify-content-between">
+        <div class="img2 col-lg-5 mt-5">
+            <img src="{{data.product_image.url}}" class="image col-xs-6 col-sm-12 col-lg-12 mt-3 text-sm-center w-100 h-75" alt="">
+        </div>
+        <div class="productdetail col-lg">
+            <h1 style="font-family: Georgia, 'Times New Roman',serif; font-size:50px;">{{data.title}}</h1>
+            <h5 class="m-2">Rs.{{data.sell_price}}/-</h5>
+            <small class=" m-2 text-decoration-line-through text-muted fs-5">Rs. {{data.discounted_price}}/-</small>
+            <br><br><h4>Product Feature</h4>
+            <ul class="fs-5" style="font-family: sans-serif;">
+                <li>{{data.description}}</li>
+                <li>Product : {{data.composition}}</li>
+
+            </ul>
+                <form action="" class="d-inline">
+                    
+                    <a href="{% url 'add-to-cart' data.id %}" class="btn btn-primary shadow m-4">Add to Cart</a>
+
+                </form>
+                <a href="#" class="btn btn-warning text-decoration-none text-white">Buy Now</a>
+            
+
+        </div>
+   
+    </div>
+</div>
+{% endblock %}

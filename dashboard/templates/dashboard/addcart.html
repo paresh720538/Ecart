@@ -1,0 +1,113 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="row mt-6">
+            {% if cart %}
+            <h3 class=" mt-4 mb-4">Welcome to cart </h3>
+    <div class="col-sm-8 ">
+        
+        <div class="card">
+            <div class="card-body" id="data">
+                {%  for x in cart %}
+                <div class="row">
+                    <div class="col-sm-3 text-center align-self-center">
+                        <img src="{{x.product.product_image.url}}" alt="" class="img-fluid img-thumbnail shadow-sm">
+                    </div>
+                    <div class="col-sm-9">
+                        <div>
+                            <h5>{{x.product.title}}</h5>
+                            <p class="mb-2 text-muted small">{{x.product.description}}</p>
+                            <div class="my-3">
+                                <label for="quantity">Quantity:</label>
+                                <button class="minus-cart btn" id="minus-btn" product_id = {{x.product.id}} > <i class="fa fa-minus-square " aria-hidden="true"></i></button>
+                                <span id="quantity">{{x.quantity}}</span>
+                                <button class="plus-cart btn" id="plus-btn" product_id = {{x.product.id}} ><i class="fa fa-plus-square" ></i></button>
+
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <a href="{% url 'del-cart-item' x.product.id %}" class="remove-cart btn btn-sm  btn-danger">Remove Item</a>
+                                <p class="mb-0"><span><strong>Rs.{{x.product.discounted_price}}</strong></span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <hr class="text-muted">
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+   <div class="col-sm-4 ">
+    <div class="card">
+        <div class="card-body">
+            <h3>Total Amount  </h3>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Amount <span id="amount">{{total}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Delivery Charges<span>60.0</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <strong>Total</strong><small>(including GST)</small>
+                </div>
+                <span id="totalamount">Rs. {{tamount}}</span>
+            </li>
+            </ul>
+            <div class="d-grid"><a href="{% url 'checkout' %}" class="btn btn-primary">Place Order</a></div>
+        </div>
+    </div>
+   </div>
+    {% else %}
+    <h1 class="text-center mt-5 mb-5">Cart is empty</h1>
+    <div class="mx-auto text-center "><a href="{% url 'product' %}" class="btn btn-primary btn-lg">Add Item</a></div>
+    {% endif %}
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        
+    <script>
+        $(document).ready(function(){
+            $('#plus-btn').on('click',function(){
+                var id = $(this).attr("product_id");
+                $.ajax({
+                    method:"GET",
+                    url:"{% url 'pluscart' %}",
+                    data:{product_id:id},
+                    success:function(data){
+                        $('#quantity').text = data.quantity;
+                        $('#amomunt').text = data.amount;
+                        $('#totalamount').text = data.totalamount;
+                        location.reload()
+                    }
+
+                })
+                
+
+            });
+
+        
+            //minus button
+                $('#minus-btn').on('click',function(){
+                    var id = $(this).attr("product_id");
+                    $.ajax({
+                        method:"GET",
+                        url:"{% url 'minuscart' %}",
+                        data:{product_id:id},
+                        success:function(data){
+                            
+                                $('#quantity').text = data.quantity;
+                                 location.reload()
+                                
+                            
+                        }
+                    
+                    })
+                })
+            
+            
+        })
+    </script>
+
+{% endblock  %}

@@ -1,0 +1,98 @@
+<nav class="navbar text-dark navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">Ecart</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">About </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Products
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'cetagory' 'LP' %}">Laptop</a></li>
+            <li><a class="dropdown-item" href="{% url 'cetagory' 'MB' %}">Mobile</a></li>
+            <li>
+              <a class="dropdown-item" href="{% url 'cetagory' 'TB' %}">Tablet</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'cetagory' 'LD' %}">Led</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'cetagory' 'HP' %}">HeadPhone</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex" role="search" action="search" method="post" >
+        {% csrf_token %}
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search Here"
+          aria-label="Search"
+          name="search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+    <ul class="navbar-nav me-auto ml-5 mb-2 mb-lg-0">
+     
+      <li class="nav-item mx-2">
+        <a class="nav-link" href="{% url 'cart' %}">Cart</a>
+      </li>
+      {% if user.is_authenticated %}
+      <li class="nav-item dropdown mx-2">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          {{user}}
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="{% url 'profile' %}">Pofile</a></li>
+          <li><a class="dropdown-item" href="#">Orders</a></li>
+          <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+      </li>
+      {% else %}
+      <li class="nav-item mx-2">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+      <li class="nav-item mx-2">
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
